@@ -83,14 +83,13 @@ async def stream(
                     file_path, direct = await YouTube.download(
                         vidid, mystic, video=status, videoid=True
                     )
-                except:
+                except Exception:
                     try:
                         
                         file_path, direct = await YTB.download(
                             vidid, mystic, video=status, videoid=True
                         )
-                    except Exception as e:
-                        logging.error(e)
+                    except Exception:
                         raise AssistantErr(_["play_14"])
                 await VIP.join_call(
                     chat_id,
@@ -154,13 +153,12 @@ async def stream(
             file_path, direct = await YouTube.download(
                 vidid, mystic, videoid=True, video=status
             )
-        except:
+        except Exception:
             try:
                 file_path, direct = await YTB.download(
                     vidid, mystic, videoid=True, video=status
                     )
-            except Exception as e:
-                logging.error(e)
+            except Exception:
                 raise AssistantErr(_["play_14"])
         if await is_active_chat(chat_id):
             await put_queue(
