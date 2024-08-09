@@ -139,7 +139,7 @@ async def skip(cli, message: Message, _, chat_id):
                 videoid=True,
                 video=status,
             )
-        except:
+        except Exception:
             try:
                 file_path, direct = await YTB.download(
                     videoid,
